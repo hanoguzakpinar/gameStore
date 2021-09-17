@@ -21,7 +21,7 @@ namespace WebApi.Application.PublisherOperations.Queries.GetPublisherGamesQuery
 
         public List<GetPublisherGamesModel> Handle()
         {
-            var _games = _context.Games.Include(x => x.Publisher).Include(x => x.Genre).Include(y => y.Publisher).Where(x => x.PublisherID == pubID).ToList<Game>();
+            var _games = _context.Games.Include(x => x.Publisher).Include(x => x.Genre).Include(y => y.Developer).Where(x => x.PublisherID == pubID).ToList<Game>();
 
             List<GetPublisherGamesModel> mv = _mapper.Map<List<GetPublisherGamesModel>>(_games);
             return mv;
