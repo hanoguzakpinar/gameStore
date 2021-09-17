@@ -7,7 +7,7 @@ using WebApi.Entities;
 
 namespace WebApi.DBOperations
 {
-    public class dataGenerator
+    public class DataGenerator
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {

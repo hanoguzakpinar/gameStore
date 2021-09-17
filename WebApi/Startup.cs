@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using WebApi.Services;
+using WebApi.DBOperations;
+using Microsoft.EntityFrameworkCore;
 
 namespace gameStore
 {
@@ -34,7 +36,8 @@ namespace gameStore
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "gameStore", Version = "v1" });
             });
-
+            services.AddDbContext<GameStoreDbContext>(options => options.UseInMemoryDatabase(databaseName: "GameStoreDb"));
+            services.AddScoped<IGameStoreDbContext>(provider => provider.GetService<GameStoreDbContext>());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddSingleton<ILoggerService, ConsoleLogger>();
         }
