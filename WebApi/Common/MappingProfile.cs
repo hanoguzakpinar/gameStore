@@ -9,6 +9,8 @@ using WebApi.Application.GameOperations.Commands.CreateGame;
 using WebApi.Application.GameOperations.Queries.GetGameDetail;
 using WebApi.Application.GameOperations.Queries.GetGamesQuery;
 using WebApi.Application.GenreOperations.Queries.GetGenres;
+using WebApi.Application.OrderOperations.CreateOrder;
+using WebApi.Application.OrderOperations.GetOrders;
 using WebApi.Application.PublisherOperations.Commands.CreatePublisher;
 using WebApi.Application.PublisherOperations.Queries.GetPublisherDetail;
 using WebApi.Application.PublisherOperations.Queries.GetPublisherGamesQuery;
@@ -35,6 +37,8 @@ namespace WebApi.Common
             CreateMap<Game, GetGamesModel>().ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name)).ForMember(x => x.Publisher, y => y.MapFrom(z => z.Publisher.Name)).ForMember(x => x.Developer, y => y.MapFrom(z => z.Developer.Name));
             CreateMap<Game, GetGameDetailModel>().ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.Genre.Name)).ForMember(x => x.Publisher, y => y.MapFrom(z => z.Publisher.Name)).ForMember(x => x.Developer, y => y.MapFrom(z => z.Developer.Name));
             CreateMap<CreateGameModel, Game>();
+            CreateMap<CreateOrderModel, Order>();
+            CreateMap<Order, GetOrdersModel>().ForMember(dest => dest.Game, opt => opt.MapFrom(src => src.Game.Name)).ForMember(x => x.Customer, y => y.MapFrom(z => z.Customer.Name + " " + z.Customer.Surname));
         }
     }
 }
