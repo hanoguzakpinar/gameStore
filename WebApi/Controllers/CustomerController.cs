@@ -13,6 +13,7 @@ using WebApi.TokenOperations.Models;
 
 namespace WebApi.Controllers
 {
+    //[Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class CustomerController : ControllerBase

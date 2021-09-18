@@ -10,6 +10,7 @@ using WebApi.DBOperations;
 
 namespace WebApi.Controllers
 {
+    //[Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class GameController : ControllerBase

@@ -5,6 +5,7 @@ using WebApi.DBOperations;
 
 namespace WebApi.Controllers
 {
+    //[Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class GenreController : ControllerBase
